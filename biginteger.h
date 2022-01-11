@@ -290,8 +290,8 @@ string findDiff(biginteger x)
 
 
 //////////// FACTORIAL!  ////////////////
-    string factorial(int n)
-    {
+    string factorial(string s)
+    {   int n=stoi(s);
         if (n < 0)
         {
             return "Error 404! factorial of negative number not possible";
