@@ -14,6 +14,7 @@ public:
     {
         value = str;
     }
+
     int length()
     {
         return value.length();
@@ -290,30 +291,33 @@ string findDiff(biginteger x)
 
 
 //////////// FACTORIAL!  ////////////////
-    string factorial(string s)
-    {   int n=stoi(s);
+    string factorial()
+    {   int n=stol(this->character());
         if (n < 0)
         {
             return "Error 404! factorial of negative number not possible";
         }
-        string pro = this->character();
+        // string pro = "1";
+        biginteger p("1");
 
         for (int i = 1; i <= n; i++)
         {
-            biginteger p(pro);
             biginteger itr(to_string(i));
-            pro = p.multiply(itr);
+            p.value = p.multiply(itr);
         }
-        return pro;
+        return p.value;
     }
 //////////// FACTORIAL!  ////////////////
 
 
     
 ///////////  POWER    /////////////////
-    string power(int n)
+    string power(biginteger x)
     {
         string str = this->character();
+        int n=stol(x.character());
+        if(n==0) return "1";
+        
         int neg = 0;
         if (str[0] == '-')
         {
@@ -325,6 +329,13 @@ string findDiff(biginteger x)
         {
             p.value = p.multiply(str);
         }
+
+        if(neg==1){
+            if(n%2==1){
+                p.value="-"+p.value;
+            }
+        }
+
         return p.value;
     }
 ////////// POWER  ////////////////////
@@ -341,5 +352,55 @@ string findDiff(biginteger x)
 
         return s;
     }
-///////// ABSOLUTE /////////////////    
+///////// ABSOLUTE /////////////////
+
+
+
+////////////////////DIVIDE////////////////////////////
+
+void divideby(biginteger x)
+{
+    string num=this->character();
+    long long int m=stol(x.character());
+	// Store the modulus of big number
+	vector<int> vec;
+	long long int mod = 0;
+
+	// Do step by step division
+	for (int i = 0; i < num.size(); i++) {
+		
+		int digit = num[i] - '0';
+
+		// Update modulo by concatenating
+		// current digit.
+		mod = mod * 10 + digit;
+
+		// Update quotient
+		long long int quo = mod / m;
+		vec.push_back(quo);
+
+		// Update mod for next iteration.
+		mod = mod % m;	
+	}
+
+	cout << "\nRemainder : " << mod << "\n";
+
+	cout << "Quotient : ";
+
+	// Flag used to remove starting zeros
+	int zeroflag = 0;
+	for (int i = 0; i < vec.size(); i++) {
+		if (vec[i] == 0 && zeroflag == 0)
+			continue;
+		zeroflag = 1;
+		cout << vec[i];
+	}
+    if(zeroflag==0)cout<<"0";
+	return;
+}
+
+////////////////////DIVIDE////////////////////////////
+
+
+
 };
