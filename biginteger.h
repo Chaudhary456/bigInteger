@@ -358,7 +358,7 @@ string findDiff(biginteger x)
 
 ////////////////////DIVIDE////////////////////////////
 
-void divideby(biginteger x)
+pair<string,long long int> divideby(biginteger x)
 {
     string num=this->character();
     long long int m=stol(x.character());
@@ -382,10 +382,11 @@ void divideby(biginteger x)
 		// Update mod for next iteration.
 		mod = mod % m;	
 	}
+    pair<string,long long int>p;
+    string ans="";
+	// cout << "\nRemainder : " << mod << "\n";
 
-	cout << "\nRemainder : " << mod << "\n";
-
-	cout << "Quotient : ";
+	// cout << "Quotient : ";
 
 	// Flag used to remove starting zeros
 	int zeroflag = 0;
@@ -393,14 +394,37 @@ void divideby(biginteger x)
 		if (vec[i] == 0 && zeroflag == 0)
 			continue;
 		zeroflag = 1;
-		cout << vec[i];
+		ans+=to_string(vec[i]);
 	}
-    if(zeroflag==0)cout<<"0";
-	return;
+    if(zeroflag==0)ans+="0";
+
+    p={ans,mod};
+
+	return p;
 }
 
 ////////////////////DIVIDE////////////////////////////
 
 
+////////////////////DDECIMAL TO BINARY////////////////////////////
+string tobinary(){
+    string s= this->character();
+
+    string ans="";
+
+    pair<string,long long int>p;
+    while(s!="0"){
+        biginteger a(s);
+        biginteger b("2");
+        p=a.divideby(b);
+        ans+=to_string(p.second);
+        s=p.first;
+    }
+    reverse(ans.begin(),ans.end());
+
+    return ans;
+}
+
+////////////////////DDECIMAL TO BINARY////////////////////////////
 
 };
