@@ -406,25 +406,136 @@ pair<string,long long int> divideby(biginteger x)
 ////////////////////DIVIDE////////////////////////////
 
 
-////////////////////DDECIMAL TO BINARY////////////////////////////
+////////////////////DECIMAL TO BINARY////////////////////////////
 string tobinary(){
     string s= this->character();
 
-    string ans="";
+    string binary="";
 
     pair<string,long long int>p;
     while(s!="0"){
         biginteger a(s);
         biginteger b("2");
         p=a.divideby(b);
-        ans+=to_string(p.second);
+        binary+=to_string(p.second);
         s=p.first;
     }
-    reverse(ans.begin(),ans.end());
+    reverse(binary.begin(),binary.end());
 
-    return ans;
+    return binary;
 }
 
-////////////////////DDECIMAL TO BINARY////////////////////////////
+////////////////////DECIMAL TO BINARY////////////////////////////
+
+////////////////////LOGICAL NOT////////////////////////////
+string NOT(){
+    string s=this->character();
+    biginteger a(s);
+    string bin = a.tobinary();
+    for(int i=0;i<bin.size();i++){
+        if(bin[i]=='1'){
+            bin[i]='0';
+        }
+        else{
+            bin[i]='1';
+        }
+    }
+    
+    return bin;
+}
+////////////////////LOGICAL NOT////////////////////////////
+
+////////////////////LOGICAL AND////////////////////////////
+string AND(biginteger x){
+    string s1=this->character();
+    string s2=x.character();
+
+    biginteger a(s1);
+    biginteger b(s2);
+    string bin1 = a.tobinary();
+    string bin2 = b.tobinary();
+    string bin="";
+    int n1,n2;
+    n1=max(bin1.size(),bin2.size());
+    n2=min(bin1.size(),bin2.size());
+     
+    if(bin1.size()<bin2.size()){
+        bin1.swap(bin2);
+    }
+
+    for(int i=0;i<n1-n2;i++){
+        bin2='0'+bin2;
+    }
+
+    for(int i=0;i<n1;i++){
+        bin[i]=((bin1[i]-'0')&(bin2[i]-'0'))+'0';
+    }
+
+    return bin;
+}
+////////////////////LOGICAL AND////////////////////////////
+
+
+////////////////////LOGICAL OR////////////////////////////
+string AND(biginteger x){
+    string s1=this->character();
+    string s2=x.character();
+
+    biginteger a(s1);
+    biginteger b(s2);
+    string bin1 = a.tobinary();
+    string bin2 = b.tobinary();
+    string bin="";
+    int n1,n2;
+    n1=max(bin1.size(),bin2.size());
+    n2=min(bin1.size(),bin2.size());
+     
+    if(bin1.size()<bin2.size()){
+        bin1.swap(bin2);
+    }
+
+    for(int i=0;i<n1-n2;i++){
+        bin2='0'+bin2;
+    }
+
+    for(int i=0;i<n1;i++){
+        bin[i]=((bin1[i]-'0')|(bin2[i]-'0'))+'0';
+    }
+
+    return bin;
+}
+////////////////////LOGICAL OR////////////////////////////
+
+////////////////////LOGICAL XOR////////////////////////////
+string AND(biginteger x){
+    string s1=this->character();
+    string s2=x.character();
+
+    biginteger a(s1);
+    biginteger b(s2);
+    string bin1 = a.tobinary();
+    string bin2 = b.tobinary();
+    string bin="";
+    int n1,n2;
+    n1=max(bin1.size(),bin2.size());
+    n2=min(bin1.size(),bin2.size());
+     
+    if(bin1.size()<bin2.size()){
+        bin1.swap(bin2);
+    }
+
+    for(int i=0;i<n1-n2;i++){
+        bin2='0'+bin2;
+    }
+
+    for(int i=0;i<n1;i++){
+        bin[i]=((bin1[i]-'0')^(bin2[i]-'0'))+'0';
+    }
+
+    return bin;
+}
+////////////////////LOGICAL XOR////////////////////////////
+
+
 
 };

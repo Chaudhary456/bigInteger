@@ -90,3 +90,30 @@ SYNTAX to use the features?
    Return:  Binary value of n1.   
    Time Complexity: O(l1*log(n1)).      
    Limits: n1>=0.    
+
+10) Logical NOT  
+   Syntax:  n1.NOT()    
+   Return:  NOT value of n1 in binary form.   
+   Time Complexity: O(l1).      
+   Limits: n1>=0.  
+
+
+11) Logical XOR  
+   Syntax:  n1.tobinary()    
+   Return:  XOR value of n1 and n2 in binary form.     
+   Time Complexity: O(max(l1,l2)).      
+   Limits: n1>=0 and n2>=0.  
+
+
+12) Logical AND  
+   Syntax:  n1.tobinary()    
+   Return:  AND value of n1 and n2 in binary form.     
+   Time Complexity: O(max(l1,l2)).   
+   Limits: n1>=0 and n2>=0.  
+
+
+13) Logical OR  
+   Syntax:  n1.tobinary()    
+   Return:  OR value of n1 and n2 in binary form.     
+   Time Complexity: O(max(l1,l2)).       
+   Limits: n1>=0 and n2>=0.  
